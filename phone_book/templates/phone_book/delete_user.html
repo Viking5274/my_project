@@ -1,0 +1,14 @@
+{% extends 'phone_book/base.html' %}
+{% block content %}
+    <h3>Delete User</h3>
+    <h2>DELETE : {{ object.name }} - {{ object.surname }}</h2>
+    <div class="form-group">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <strong>Are you sure?</strong>
+        <br>
+        <button class="btn btn-dark">DELETE USER</button>
+    </form>
+    </div>
+
+    {% endblock %}

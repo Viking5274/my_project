@@ -1,0 +1,19 @@
+{% extends 'phone_book/base.html' %}
+{% block content %}
+
+<h3>Phone Book</h3>
+<small>
+    <a href="{% url 'update_user' object.pk %}">Edit</a><br>
+    <a href="{% url 'delete_user' object.pk %}">delete</a><br>
+</small>
+<h1>{{object.name}}</h1>
+<p>{{ object.surname }}</p>
+{{object.address}}<br>
+{{object.phone}}<br>
+
+{% if object.pic %}<br>
+    <img src="{{ object.pic.url }}"><br>
+{% endif %}
+
+<a href="{% url 'home' %}" class="btn btn-dark">Back</a>
+{% endblock %}
