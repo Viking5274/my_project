@@ -1,0 +1,5 @@
+.idea
+__pycache__
+phone_book/__pycache__
+my_project/__pycache__
+phone_book/migrations/__pycache__
