@@ -1,9 +1,8 @@
 from django.db.models import Q
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.shortcuts import get_object_or_404, redirect
 
-from .forms import UserForm, EditForm
+from .forms import UserForm
 from .models import PhoneBook
 
 

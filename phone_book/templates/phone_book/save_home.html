@@ -4,7 +4,7 @@
 <ul class="list-group pull-down" id="contact-list">
 {% for el in object_list %}
         <li class="list-group-item">
-           Name: {{ el.name }} <br>
+            Name: {{ el.name }} <br>
             Surname: {{ el.surname }} <br>
             Phone number: {{ el.phone }} <br>
         <a href="{% url 'user-details' el.pk %}"  class="btn btn-primary"> INFO </a>

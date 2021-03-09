@@ -6,13 +6,13 @@
   <tr>
     <th>Firstname</th>
     <th>Lastname</th>
-    <th>Age</th>
+    <th>Phone</th>
   </tr>
 {% for el in object_list %}
         <tr>
             <th>Name: {{ el.name }} </th>
            <th> Surname: {{ el.surname }} </th>
-            <th>Phone number: {{ el.phone }} </th>
+            <th> number: {{ el.phone }} </th>
        <th> <a href="{% url 'user-details' el.pk %}"  class="btn btn-primary"> INFO </a></th>
           <th>  <a href="{% url 'update_user' el.pk %}"  class="btn btn-secondary"> Edit </a></th>
           <th>  <a href="{% url 'delete_user' el.pk %}"  class="btn btn-danger">DELETE</a></th>

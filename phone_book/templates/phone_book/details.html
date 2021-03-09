@@ -3,13 +3,11 @@
 {% extends 'phone_book/base.html' %}
 {% block content %}
 
-<h3>Phone Book</h3>
+<h3>INFO ABOUT USER {{ object.name }}</h3>
 <a href="{% url 'update_user' object.pk %}" class="btn btn-secondary">Edit</a>
-<a href="{% url 'delete_user' object.pk %}" class="btn btn-danger">Delete</a><br>
+<a href="{% url 'delete_user' object.pk %}" class="btn btn-danger">Delete</a><br><br>
 
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container">
@@ -20,29 +18,24 @@
                     <div class="col-sm-6 col-md-4">
                         {% if object.pic %}
                         <img src="{{ object.pic.url }}" alt="" class="img-rounded img-responsive" />
+                        {% else %}
+                        <img src="/media/images/auto.jpg" alt="" class="img-rounded img-responsive" />
                         {% endif %}
                     </div>
                     <div class="col-sm-6 col-md-8">
                         <h4>{{object.name}} {{object.surname}}</h4>
-                        <small><cite title="San Francisco, USA">{{object.address_country}} {{object.address_city}} {{object.address_street}} <i class="glyphicon glyphicon-map-marker">
-                        </i></cite></small>
+                        <small>{{object.address_country}} {{object.address_city}} {{object.address_street}} <i class="glyphicon glyphicon-map-marker">
+                        </i></small>
                         <p>
-                            <i class="glyphicon glyphicon-envelope"></i>{{object.phone}}
+                            <i class="glyphicon glyphicon-envelope"></i>  {{object.phone}}
                             <br />
-                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
+                            {% if object.url %}
+                            <i class="glyphicon glyphicon-globe"></i><a href="{{object.url}}">{{object.url}}</a>
+                            {% else %}
+                            <i class="glyphicon glyphicon-globe"></i> No link here((
+                            {% endif %}
                             <br />
                         <!-- Split button -->
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-primary">
-                                Social</button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Twitter</a></li>
-                                <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
-                                <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Github</a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
