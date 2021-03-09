@@ -45,15 +45,15 @@ class UserForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(UserForm, self).__init__(*args, **kwargs)
-
         self.fields['address_country'].required = False
         self.fields['address_city'].required = False
         self.fields['address_street'].required = False
         self.fields['url'].required = False
         self.fields['pic'].required = False
+        if 'instance' in kwargs:
+            self.id = kwargs['instance'].id
 
     def clean(self):
-        print(self)
         address_country = self.cleaned_data.get('address_country')
         address_city = self.cleaned_data.get('address_city')
         address_street = self.cleaned_data.get('address_street')
@@ -61,9 +61,9 @@ class UserForm(ModelForm):
         surname = self.cleaned_data.get('surname')
         phone = self.cleaned_data.get('phone')
         for i in PhoneBook.objects.all():
-            if (name == i.name and surname == i.surname) and id != i.id:
+            if (name == i.name and surname == i.surname) and self.id != i.id:
                 raise forms.ValidationError({'surname': u'Error: User with this name and surname is already exist'})
-            if i.phone == phone:
+            if i.phone == phone and self.id != i.id:
                 raise forms.ValidationError({'phone': u'Error: This phone is already exits'})
             if address_street != '' or address_city != '' or address_country != '':
                 if not (address_street != '' and address_city != '' and address_country != ''):

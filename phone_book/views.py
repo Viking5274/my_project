@@ -27,18 +27,7 @@ class AddUser(CreateView):
 class UpdateUser(UpdateView):
     model = PhoneBook
     template_name = 'phone_book/update_user.html'
-    form_class = EditForm
-    #queryset = PhoneBook.objects.all()
-
-    """def get_object(self, queryset = PhoneBook.objects.all()):
-        id_ = self.kwargs.get('pk')
-        print("MY ID")
-        print(id_)
-        return get_object_or_404(PhoneBook, id=id_)
-
-    def form_valid(self, form):
-        print(form.cleaned_data)
-        return super().form_valid(form)"""
+    form_class = UserForm
 
 
 class DeleteUser(DeleteView):
