@@ -1,17 +1,19 @@
 {% extends 'phone_book/base.html' %}
 {% block content %}
     <h3>Phone Book</h3>
-<ul>
+<ul class="list-group pull-down" id="contact-list">
 {% for el in object_list %}
-        <li>
-            {{ el.name }} - {{ el.surname }}
-        {{ el.phone }} - {{ el.address }} <br>
-            {{ el.url }}
-        <a href="{% url 'user-details' el.pk %}"> INFO </a> <br>
-            <a href="{% url 'update_user' el.pk %}"> (Edit) </a>
-            <a href="{% url 'delete_user' el.pk %}">(DELETE)</a>
+        <li class="list-group-item">
+           Name: {{ el.name }} <br>
+            Surname: {{ el.surname }} <br>
+            Phone number: {{ el.phone }} <br>
+        <a href="{% url 'user-details' el.pk %}"  class="btn btn-primary"> INFO </a>
+            <a href="{% url 'update_user' el.pk %}"  class="btn btn-secondary"> Edit </a>
+            <a href="{% url 'delete_user' el.pk %}"  class="btn btn-danger">DELETE</a>
         </li>
 {% endfor %}
 </ul>
+
+
 
     {% endblock %}
